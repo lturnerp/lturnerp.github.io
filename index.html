@@ -332,7 +332,7 @@
       // Si rootNode es null (aún cargando), no renderizar nada o un loader.
       // El componente App ya maneja un estado de carga, por lo que aquí podemos asumir que `data` existe.
       if (!rootNode || !rootNode.id) {
-          return <div className="p-4 bg-white rounded-lg shadow-lg text-center text-text-main font-manrope">Cargando datos del mapa...</div>;
+          return <div className="p-4 bg-white rounded-lg shadow-lg text-center text-text-main font-manrope">Cargando datos...</div>;
       }
 
       return (
