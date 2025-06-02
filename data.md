@@ -6,7 +6,7 @@
     - PR1-MO-001-Piscicultura Los Tilcos-C-0
     - PR1-NP-001-Piscicultura Los Tilcos-C-0
     - PR1-NP-002-Piscicultura Los Tilcos-C-0
-    - PR1-PANO-001-Piscicultura Los Tilcos-C-0
+    - [PR1-PANO-001-Piscicultura Los Tilcos-C-0](https://cloud.3dvista.com//hosting/8065386/2/index.htm)
     - PR1-PL-001-Piscicultura Los Tilcos-C-0
 
   - PR9-PISCICULTURA AGUAS BUENAS-C-0
@@ -14,14 +14,14 @@
     - PR9-NP-001-Piscicultura Aguas Buenas-C-0
     - PR9-NP-002-Piscicultura Aguas Buenas-C-0
     - PR9-NP-003-Ortofoto Piscicultura Aguas Buenas-C-0
-    - PR9-PANO-001-Piscicultura Aguas Buenas-C-0
+    - [PR9-PANO-001-Piscicultura Aguas Buenas-C-0](https://cloud.3dvista.com//hosting/8065386/1/index.htm)
     - PR9-PL-001-Piscicultura Aguas buenas-C-0
 
   - PR10-PISCICULTURA LAS QUEMAS-C-0
     - PR10-MO-001-PISCICULTURA LAS QUEMAS-C-A
     - PR10-NP-001-PISCICULTURA LAS QUEMAS-C-A
     - PR10-NP-002-PISCICULTURA LAS QUEMAS-C-A
-    - PR10-PANO-001-PISCICULTURA LAS QUEMAS-C-0
+    - [PR10-PANO-001-PISCICULTURA LAS QUEMAS-C-0](https://cloud.3dvista.com//hosting/8065386/0/index.htm)
     - PR10-PL-001-PISCICULTURA LAS QUEMAS-C-A
 
 ## 2-Centros de mar
@@ -74,13 +74,13 @@
       - PR6-PL-001-Ponton Yadran 06-C-0
     
     - PR11-PONTON ENSENADA-C-0
-      - PR11-MO-001-Ponton Ensenada-C-0
+      - [PR11-MO-001-Ponton Ensenada-C-0](https://build.dalux.com/client/310501216368984064/box/files/319121154595880960)
       - PR11-NP-001-Ponton Ensenada-C-0
-      - PR11-PL-001-Ponton Ensenada-C-0
+      - [PR11-PL-001-Ponton Ensenada-C-0](https://build.dalux.com/client/310501216368984064/box/files/319122123773706240)
         
     - PR14-PONTON YADRAN 01-C-0
       - [PR14-MO-001-Ponton Yadran 01-C-0](https://build.dalux.com/client/310501216368984064/box/files/318763097521127424)
-      - [PR14-NP-001-Ponton Yadran 01-C-0](https://cloud.prevu3d.com/realityplan/62fc31c9-bf4b-4a81-81c9-c835c2a434eb/viewer)
+      - [PR14-NP-001-Ponton Yadran 01-C-0](https://rever.prevu3d.com/realityplan/4f69fcc3-b8b4-40c1-8c0e-2dc088bd42cf/viewer)
       - [PR14-PL-001-Ponton Alimentación Yadran 01-C-0](https://build.dalux.com/client/310501216368984064/box/files/318763944103641088)
   
     - PR16-PONTON YADRAN 03-C-0
