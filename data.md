@@ -32,7 +32,7 @@
       - [PR12-MO-001-Emplazamiento-C-0](https://build.dalux.com/client/310501216368984064/box/files/318772955435761664)
       - [PR12-MO-002-Pontón Alimentación 02-C-0](https://build.dalux.com/client/310501216368984064/box/files/318772995415867392)
       - PR12-NP-001-Pontón-C-0
-      - PR12-PANO-001-CC Queilen-C-0
+      - [PR12-PANO-001-CC Queilen-C-0](https://reverdigital-my.sharepoint.com/:u:/g/personal/servicios_rever-digital_com/EduP7hw0PrRMif7JogBXQ2ABpvXWsoBqWve_Xw1e2mfvgg?e=j0TleW)
       - [PR12-PL-001-Emplazamiento-C-0](https://build.dalux.com/client/310501216368984064/box/files/318773226052255744)
       - [PR12-PL-001-Ponton Alimentación Yadran 02-C-0](https://build.dalux.com/client/310501216368984064/box/files/318773269773680640)
         
