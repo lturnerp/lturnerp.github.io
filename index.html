@@ -768,9 +768,9 @@
       React.useEffect(() => {
         const loadMindmapFromFile = async () => {
           try {
-            // Asegúrate de que 'data.txt' esté en la misma carpeta que tu HTML,
+            // Asegúrate de que 'data.md' esté en la misma carpeta que tu HTML,
             // o proporciona la ruta correcta si está en otro lugar accesible por el servidor.
-            const response = await fetch('./data.txt'); 
+            const response = await fetch('./data.md'); 
             if (!response.ok) {
               throw new Error(`Error al cargar el archivo: ${response.statusText} (status: ${response.status})`);
             }
@@ -788,7 +788,7 @@
                 setLoadingError("Error al procesar los datos");
             }
           } catch (error) {
-            console.error("Error cargando data.txt:", error);
+            console.error("Error cargando data.md:", error);
             setLoadingError(`No se pudo cargar la información: ${error.message}.`);
             // Si falla la carga, parsear una cadena vacía para mostrar un mapa vacío
             setMindmapData(parseMarkdownToMindMap("")); 
