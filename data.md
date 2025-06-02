@@ -4,8 +4,8 @@
 
   - PR1-PISCICULTURA LOS TILCOS-C-0
     - [PR1-MO-001-Piscicultura Los Tilcos-C-0](https://build.dalux.com/client/310501216368984064/box/files/320215981832011776)
-    - [PR1-NP-001-Piscicultura Los Tilcos-C-0](https://rever.prevu3d.com/realityplan/d5712e29-dbf7-4b3d-9928-5c5c838b5f69/viewer)
-    - [PR1-NP-002-Piscicultura Los Tilcos-C-0](https://rever.prevu3d.com/realityplan/4abf6967-e81b-4775-a969-25899c783ecc/viewer)
+    - [PR1-NP-001-Piscicultura Los Tilcos-C-0](https://rever.prevu3d.com/realityplan/d5712e29-dbf7-4b3d-9928-5c5c838b5f69/viewer)-2023
+    - [PR1-NP-002-Piscicultura Los Tilcos-C-0](https://rever.prevu3d.com/realityplan/4abf6967-e81b-4775-a969-25899c783ecc/viewer)-2024
     - [PR1-PANO-001-Piscicultura Los Tilcos-C-0](https://cloud.3dvista.com//hosting/8065386/2/index.htm)
     - [PR1-PL-001-Piscicultura Los Tilcos-C-0](https://build.dalux.com/client/310501216368984064/box/files/320216017387126784)
 
@@ -29,12 +29,12 @@
   - 2.1- Centros de cultivo
 
     - PR12-CENTRO CULTIVO QUEILEN-C-0
-      - [PR12-MO-001-Emplazamiento-C-0](https://build.dalux.com/client/310501216368984064/box/files/318772955435761664)
-      - [PR12-MO-002-Pontón Alimentación 02-C-0](https://build.dalux.com/client/310501216368984064/box/files/318772995415867392)
-      - [PR12-NP-001-Pontón-C-0](https://rever.prevu3d.com/realityplan/7ae292f2-2137-41a3-bb61-27a4a6af77fa/viewer)
+      - [PR12-MO-001-Emplazamiento-C-0](https://build.dalux.com/client/310501216368984064/box/files/318772955435761664)-Emplazamiento
+      - [PR12-MO-002-Pontón Alimentación 02-C-0](https://build.dalux.com/client/310501216368984064/box/files/318772995415867392)-Pontón Alimentación
+      - [PR12-NP-001-Pontón-C-0](https://rever.prevu3d.com/realityplan/7ae292f2-2137-41a3-bb61-27a4a6af77fa/viewer)-Pontón C
       - [PR12-PANO-001-CC Queilen-C-0](https://reverdigital-my.sharepoint.com/:u:/g/personal/servicios_rever-digital_com/EduP7hw0PrRMif7JogBXQ2ABpvXWsoBqWve_Xw1e2mfvgg?e=j0TleW)
-      - [PR12-PL-001-Emplazamiento-C-0](https://build.dalux.com/client/310501216368984064/box/files/318773226052255744)
-      - [PR12-PL-001-Ponton Alimentación Yadran 02-C-0](https://build.dalux.com/client/310501216368984064/box/files/318773269773680640)
+      - [PR12-PL-001-Emplazamiento-C-0](https://build.dalux.com/client/310501216368984064/box/files/318773226052255744)-Emplazamiento
+      - [PR12-PL-001-Ponton Alimentación Yadran 02-C-0](https://build.dalux.com/client/310501216368984064/box/files/318773269773680640)-Pontón Alimentación Yadran 02
         
     - PR13-CENTRO CULTIVO GORRO-C-0
       - PR13-MO-001-Emplazamiento-C-0
