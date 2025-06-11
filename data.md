@@ -38,7 +38,7 @@
         
     - PR13-CENTRO CULTIVO GORRO-C-0
       - PR13-MO-001-Emplazamiento-C-0
-      - PR13-PANO-001-CC Gorro-C-0
+      - [PR13-PANO-001-CC Gorro-C-0](./ccgorro/index.htm)
       - PR13-PL-001-CC Gorro-C-0
   
     - PR15-CENTRO CULTIVO ENSENADA-C-0
