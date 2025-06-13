@@ -6,7 +6,7 @@
     - [PR1-MO-001-Piscicultura Los Tilcos-C-0](https://build.dalux.com/client/310501216368984064/box/files/320215981832011776)
     - [PR1-NP-001-Piscicultura Los Tilcos-C-0](https://rever.prevu3d.com/realityplan/d5712e29-dbf7-4b3d-9928-5c5c838b5f69/viewer)-2023
     - [PR1-NP-002-Piscicultura Los Tilcos-C-0](https://rever.prevu3d.com/realityplan/4abf6967-e81b-4775-a969-25899c783ecc/viewer)-2024
-    - [PR1-PANO-001-Piscicultura Los Tilcos-C-0](./pisc_lostilcos/index.htm)
+    - [PR1-PANO-001-Piscicultura Los Tilcos-C-0](https://cloud.3dvista.com//hosting/8065386/4/index.htm)
     - [PR1-PL-001-Piscicultura Los Tilcos-C-0](https://build.dalux.com/client/310501216368984064/box/files/320216017387126784)
 
   - PR9-PISCICULTURA AGUAS BUENAS-C-0
