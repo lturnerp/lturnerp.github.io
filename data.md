@@ -2,19 +2,19 @@
 
 ## 1-Pisciculturas
 
-  - [PR1-PISCICULTURA LOS TILCOS-C-0](https://cloud.3dvista.com//hosting/8065386/4/index.htm)
-  - PR9-PISCICULTURA AGUAS BUENAS-C-0
-  - PR10-PISCICULTURA LAS QUEMAS-C-0
+  - [PR1-Piscicultura Los Tilcos-C-0](https://cloud.3dvista.com//hosting/8065386/4/index.htm)
+  - PR9-Piscicultura Aguas Buenas-C-0
+  - PR10-Piscicultura Las Quemas-C-0
 
 ## 2-Centros de mar
 
-  - 2.1- Centros de cultivo
+  - Centros de cultivo
 
     - PR12-CENTRO CULTIVO QUEILEN-C-0
     - PR13-CENTRO CULTIVO GORRO-C-0
     - PR15-CENTRO CULTIVO ENSENADA-C-0
 
-  - 2.2- Pontones
+  - Pontones
 
     - PR2-PONTON BASE YADRAN 01-C-0
     - PR3-PONTON BASE YADRAN 02-C-0    
@@ -27,8 +27,8 @@
 
 ## 3-Planta procesos
 
-  - PR7-PLANTA QUELLON-C-0
+  - PR7-Planta Quellon-C-0
 
 ## 4-Sala de Ventas
 
-  - PR8-SALA DE VENTAS-C-0
+  - PR8-Sala de Ventas-C-0
