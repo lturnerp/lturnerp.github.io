@@ -43,8 +43,12 @@
   <style>
     body {
       font-family: 'recoleta', sans-serif;
-      /* Se eliminan las 5 líneas de background-image y sus propiedades */
-      background-color: transparent; /* <--- CAMBIO CLAVE */
+      background-image: url('./img/fondo.jpg'); 
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center center;
+      background-size: cover;
+      background-color: #B7BECC; 
       -webkit-user-select: none; /* Safari */
       -ms-user-select: none; /* IE 10+ */
       user-select: none; /* Estándar */
@@ -163,6 +167,7 @@
               {node.linkUrl ? (
                 <a
                   href={node.linkUrl}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className={`text-link-color hover:text-link-hover hover:underline ${mainTextClasses} ${node.checked ? 'text-accent' : ''}`}
                   onClick={(e) => e.stopPropagation()} 
