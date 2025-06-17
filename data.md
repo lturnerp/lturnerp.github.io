@@ -10,9 +10,9 @@
 
   - Centros de cultivo
 
-    - PR12-CENTRO CULTIVO QUEILEN-C-0
-    - PR13-CENTRO CULTIVO GORRO-C-0
-    - PR15-CENTRO CULTIVO ENSENADA-C-0
+    - PR12-Centro de cultivo Queilen-C-0
+    - PR13-Centro de cultivo Gorro-C-0
+    - PR15-Centro de cultivo Ensenada-C-0
 
   - Pontones
 

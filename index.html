@@ -21,10 +21,10 @@
       theme: {
         extend: {
           colors: {
-            'primary': '#0a1d2b', 
+            'primary': '#002a3a', 
             'secondary': '#ffffff', 
             'accent': '#ffffff', 
-            'text-main': '#0a1d2b', 
+            'text-main': '#002a3a', 
             'text-light': '#000000', 
             'border-color': '#ffffff', 
             'checkbox-active': '#eae6d6', 
@@ -40,16 +40,32 @@
       },
     }
   </script>
+
   <style>
+
+    @keyframes scroll-bg {
+      from {
+        background-position: 0 0;
+      }
+      to {
+        background-position: -4000px 0;
+      }
+    }
+
     body {
       font-family: 'recoleta', sans-serif;
-      /* Se eliminan las 5 líneas de background-image y sus propiedades */
-      background-color: transparent; /* <--- CAMBIO CLAVE */
-      -webkit-user-select: none; /* Safari */
-      -ms-user-select: none; /* IE 10+ */
-      user-select: none; /* Estándar */
+      background-image: url('./img/fondo_pano2.JPG');
+      background-size: cover;
+      animation-name: scroll-bg;
+      animation-duration: 90s;    
+      animation-timing-function: linear; 
+      animation-iteration-count: infinite; 
+      -webkit-user-select: none; 
+      -ms-user-select: none; 
+      user-select: none; 
     }
   </style>
+
 </head>
 <body>
   <div id="root"></div>
@@ -59,21 +75,15 @@
       return Math.random().toString(36).substr(2, 9);
     };
 
+
+
     const Header = () => {
       return (
-        <header className="bg-primary text-white p-3 shadow-md sticky top-0 z-50">
-          <div className="container mx-auto flex items-center justify-between">
-            <div className="logo-left h-8 md:h-10">
+        <header className="bg-transparent text-white p-3 sticky top-0 z-50">
+          <div className="container mx-auto flex items-center justify-center">
+            <div className="h-8 md:h-10 flex items-center">
               <img
-                src='./img/logo-blanco.svg'
-                alt="Descripción de tu logo"
-                className="h-full w-auto" 
-              />
-            </div>
-            <div className="logo-right h-8 md:h-10">
-              <img
-                src='./img/rever-solo-blanco-pequeno.svg'
-                alt="Descripción de tu logo"
+                src='./img/logo-negro.svg'
                 className="h-full w-auto" 
               />
             </div>
@@ -142,7 +152,7 @@
       }
 
       const renderContent = () => {
-        let tooltip = node.originalContent; 
+      let tooltip = node.originalContent; 
         
         if (node.isParsedFolder) {
             tooltip = `Original: ${node.parsedNodeOriginalText}\n`;
@@ -155,7 +165,7 @@
         const mainTextClasses = `truncate font-recoleta ${node.checked ? 'font-semibold text-accent' : 'text-text-main'}`;
         const containerClasses = `ml-1 flex-grow min-w-0 ${hasChildren ? 'cursor-pointer' : 'cursor-default'}`;
         const textToShowAsMain = node.displayContent; 
-        const textToShowAsOriginal = node.isParsedFolder ? node.parsedNodeOriginalText : null;
+          const textToShowAsOriginal = node.isParsedFolder ? node.parsedNodeOriginalText : null;
 
         return (
           <div className={`flex items-baseline justify-between w-full ${containerClasses}`} title={tooltip}>
@@ -172,12 +182,12 @@
               ) : (
                 <span className={mainTextClasses}>{textToShowAsMain}</span>
               )}
-            </div>
+            </div>{/*
             {textToShowAsOriginal && (
               <span className="hidden sm:inline-block text-xs text-text-light font-grotesk font-normal whitespace-nowrap truncate flex-shrink-0" title={textToShowAsOriginal}>
                  {textToShowAsOriginal}
               </span>
-            )}
+            )}*/}
           </div>
         );
       };
@@ -247,7 +257,7 @@
 
       return (
         <div className="p-4 bg-white/40 backdrop-blur-sm rounded-lg shadow-lg">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 space-y-2 sm:space-y-0">
+          {/*<div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 space-y-2 sm:space-y-0">
             <div className="flex items-center text-2xl font-recoleta font-bold text-primary cursor-default" title={rootNode.originalContent || rootNode.displayContent}>
               <span className="ml-1">{rootNode.displayContent}</span>
             </div>
@@ -270,7 +280,7 @@
                 <span className="ml-2 hidden sm:inline"></span>
               </a>
             </div>
-          </div>
+          </div>*/}
 
           {rootNode.expanded && rootNode.children && rootNode.children.length > 0 && (
             <div className="border-l-2 border-border-color"> 
@@ -395,23 +405,42 @@
         setMindmapData(newRootNodeData);
       };
 
+
       return (
-        <div className="min-h-screen flex flex-col"> 
+        <div className="min-h-screen flex flex-col">
           <Header />
-          <main className="flex-grow p-2 sm:p-4">
-            <div className="max-w-7xl mx-auto">
-              <div className="space-y-4"> 
-                {loadingError && (
-                  <div className="p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg shadow-lg text-center font-grotesk">
-                    {loadingError}
-                  </div>
-                )}
-                {mindmapData ? (
-                  <MindMap data={mindmapData} onNodesChange={handleNodesChange} />
-                ) : (
-                  !loadingError && <div className="p-4 bg-white rounded-lg shadow-lg text-center text-text-main font-grotesk">Cargando lista...</div>
-                )}
+          <main className="flex-grow flex items-center p-2 sm:p-4">
+
+            <div className="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          
+              <div>
+                <div className="space-y-4">
+                  {loadingError && (
+                    <div className="p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg shadow-lg text-center font-grotesk">
+                      {loadingError}
+                    </div>
+                  )}
+                  {mindmapData ? (
+                    <MindMap data={mindmapData} onNodesChange={handleNodesChange} />
+                  ) : (
+                    !loadingError && <div className="p-4 bg-white rounded-lg shadow-lg text-center text-text-main font-grotesk">Cargando lista...</div>
+                  )}
+                </div>
               </div>
+
+              <div className="hidden lg:flex flex-col justify-between items-end h-full p-4 lg:p-8">
+                <h2
+                  className="text-5xl lg:text-7xl font-recoleta font-thin text-text-main text-right w-full"
+                  style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.7)' }}
+                >
+                  Recorre nuestros gemelos digitales
+                </h2>
+                {/*<img
+                  src="./img/personas.png" 
+                  className="w-full max-w-lg mt-8"
+                />*/}
+              </div>
+
             </div>
           </main>
         </div>
