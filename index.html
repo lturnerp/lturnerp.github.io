@@ -41,30 +41,18 @@
     }
   </script>
 
-  <style>
+<style>
+  body {
+    /* Hacemos el fondo transparente */
+    background-color: transparent;
 
-    @keyframes scroll-bg {
-      from {
-        background-position: 0 0;
-      }
-      to {
-        background-position: -4000px 0;
-      }
-    }
-
-    body {
-      font-family: 'recoleta', sans-serif;
-      background-image: url('./img/fondo_pano2.JPG');
-      background-size: cover;
-      animation-name: scroll-bg;
-      animation-duration: 90s;    
-      animation-timing-function: linear; 
-      animation-iteration-count: infinite; 
-      -webkit-user-select: none; 
-      -ms-user-select: none; 
-      user-select: none; 
-    }
-  </style>
+    /* Mantenemos las otras propiedades que querías */
+    font-family: 'recoleta', sans-serif;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+</style>
 
 </head>
 <body>
