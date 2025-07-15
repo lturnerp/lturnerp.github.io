@@ -10,9 +10,10 @@
       margin: 0;
       padding: 0;
       height: 100%;
-      overflow: hidden;
+      overflow: hidden; /* evita scroll en la página */
       font-family: sans-serif;
       background-color: #100F2B;
+      -webkit-overflow-scrolling: auto !important; /* desactiva rebote en iOS */
     }
 
     .iframe-container {
@@ -25,6 +26,8 @@
       width: 100%;
       height: 100%;
       border: none;
+      overflow: hidden; /* evita scroll interno y rebote */
+      -webkit-overflow-scrolling: auto !important; /* desactiva rebote en iOS */
     }
 
     .footer-overlay {
@@ -70,6 +73,11 @@
     const iframe = document.getElementById('jotform-iframe');
     const url = 'https://form.jotform.com/251946294371060' + window.location.hash;
     iframe.src = url;
+
+    // Previene el rebote (elastic scroll) en dispositivos iOS bloqueando touchmove en el body
+    document.body.addEventListener('touchmove', function(e) {
+      e.preventDefault();
+    }, { passive: false });
   </script>
 </body>
 </html>
