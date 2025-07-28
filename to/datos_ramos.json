@@ -29,7 +29,6 @@
   "gruposDeAsignaturas": [
     {
       "nombreGrupo": "TEORICO OCUPACIÓN Y COMPETENCIAS II",
-      "nombreCorto": "TEORICO Ocup. II",
       "color": "color-azul",
       "opciones": [
         { "nrc": "15378", "docente": "FRANCISCO SALAZAR", "bloques": [{ "dia": "MARTES", "horario": "09:30 A 10:50" }] },
@@ -38,7 +37,6 @@
     },
     {
       "nombreGrupo": "TALLER DE OCUPACIÓN Y COMPETENCIAS II",
-      "nombreCorto": "TALLER Ocup. II",
       "color": "color-azul",
       "opciones": [
         { "nrc": "15381", "docente": "PENDIENTE", "bloques": [{ "dia": "LUNES", "horario": "11:00 A 13:50" }] },
@@ -47,7 +45,6 @@
     },
     {
       "nombreGrupo": "TALLERES DE SALUD POBLACIONAL (LUNES)",
-      "nombreCorto": "TALLER Salud Pob.",
       "color": "color-naranja",
       "opciones": [
         { "nrc": "-", "docente": "Sección 1", "bloques": [{ "dia": "LUNES", "horario": "14:30 A 15:50" }] },
@@ -56,7 +53,6 @@
     },
     {
       "nombreGrupo": "TALLERES DE SALUD POBLACIONAL (MARTES)",
-      "nombreCorto": "TALLER Salud Pob.",
       "color": "color-verde-claro",
       "opciones": [
         { "nrc": "-", "docente": "Sección 1", "bloques": [{ "dia": "MARTES", "horario": "11:00 A 12:20" }] },
@@ -65,7 +61,6 @@
     },
     {
       "nombreGrupo": "TALLER DE GESTIÓN E INCLUSIÓN II",
-      "nombreCorto": "TALLER Gestión II",
       "color": "color-amarillo-claro",
       "opciones": [
         { "nrc": "15396", "docente": "FELIPE ARANEDA", "bloques": [{ "dia": "LUNES", "horario": "14:30 A 15:50" }] },
@@ -74,7 +69,6 @@
     },
     {
       "nombreGrupo": "TEORICO MARCOS DE REF. Y MODELOS",
-      "nombreCorto": "TEORICO Marcos",
       "color": "color-verde-oscuro",
       "opciones": [
         { "nrc": "15356", "docente": "JACQUELINE CARTAGENA", "bloques": [{ "dia": "JUEVES", "horario": "11:00 A 13:50" }] },
@@ -83,7 +77,6 @@
     },
     {
       "nombreGrupo": "TALLER MARCOS DE REF. Y MODELOS",
-      "nombreCorto": "TALLER Marcos",
       "color": "color-verde-oscuro",
       "opciones": [
         { "nrc": "15360", "docente": "J. CARTAGENA / P. ZBANKOVA", "bloques": [
@@ -98,7 +91,6 @@
     },
     {
       "nombreGrupo": "TALLER HITO EVALUATIVO INTEGRATIVO",
-      "nombreCorto": "HITO Evaluativo",
       "color": "color-amarillo",
       "opciones": [
         { "nrc": "15398", "docente": "NATALIA BILBAO", "bloques": [{ "dia": "VIERNES", "horario": "08:00 A 09:20" }] },

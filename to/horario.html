@@ -10,7 +10,6 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background-color: #f4f7f9; color: #333; margin: 0; padding: 20px;
         }
-        /* MEJORA: El contenedor principal estará oculto hasta que se ingrese la contraseña */
         .container {
             display: none; flex-wrap: wrap; gap: 20px; max-width: 1400px; margin: auto;
         }
@@ -40,26 +39,32 @@
         .bloque-clase {
             box-sizing: border-box; width: 100%; height: 100%;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            font-weight: bold; font-size: 0.9em; padding: 5px;
-            border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-            overflow: hidden; line-height: 1.3; position: relative;
-            
-            /* MEJORA: Estilo por defecto para colores no definidos */
-            background-color: #bdc3c7; /* Gris neutro */
-            color: #2c3e50; /* Texto oscuro */
+            font-size: 0.9em; padding: 5px; border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2); overflow: hidden;
+            line-height: 1.3; position: relative;
+            background-color: #bdc3c7; color: #2c3e50;
         }
-        .bloque-clase .info-ramo, .bloque-clase .docente-corto, .bloque-clase .nrc-corto { font-size: 0.9em; font-weight: normal; }
+
+        /* MEJORA: Estilos para el texto dentro del bloque */
+        .bloque-clase .info-ramo {
+            font-weight: bold; /* Nombre de la asignatura en negrita */
+        }
+        .bloque-clase .docente-corto, .bloque-clase .nrc-corto {
+            font-weight: normal; /* Docente y NRC con peso normal */
+            opacity: 0.9;
+        }
+
         .btn-eliminar { position: absolute; top: 2px; right: 5px; background-color: rgba(0,0,0,0.2); color: white; border: none; border-radius: 50%; width: 18px; height: 18px; font-weight: bold; line-height: 16px; text-align: center; cursor: pointer; transition: background-color 0.2s; }
         .btn-eliminar:hover { background-color: rgba(231, 76, 60, 0.8); }
 
         /* Colores específicos (sobrescriben el estilo por defecto) */
         .color-azul, .color-naranja, .color-verde-claro, .color-verde-oscuro, .color-amarillo-claro, .color-rosa {
-            color: #fff; /* Texto blanco para fondos oscuros */
+            color: #fff;
         }
         .color-azul { background-color: #3498db; }
         .color-naranja { background-color: #e67e22; }
         .color-verde-claro { background-color: #2ecc71; }
-        .color-amarillo { background-color: #f1c40f; color: #333; } /* Amarillo necesita texto oscuro */
+        .color-amarillo { background-color: #f1c40f; color: #333; }
         .color-verde-oscuro { background-color: #16a085; }
         .color-amarillo-claro { background-color: #f39c12; }
         .color-rosa { background-color: #e91e63; }
@@ -109,7 +114,6 @@
                     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                     const data = await response.json();
 
-                    // MEJORA: Verificación de contraseña
                     const passwordCorrecta = data.password;
                     if (!passwordCorrecta) {
                         alert("Error de configuración: no se encontró contraseña en el archivo JSON.");
@@ -119,7 +123,7 @@
                     const passIngresada = prompt("Por favor, ingresa la contraseña para continuar:");
 
                     if (passIngresada === passwordCorrecta) {
-                        document.getElementById('main-container').style.display = 'flex'; // Muestra el contenido
+                        document.getElementById('main-container').style.display = 'flex';
                         asignaturasFijas = data.asignaturasFijas;
                         gruposDeAsignaturas = data.gruposDeAsignaturas;
                         construirInterfaz();
@@ -132,7 +136,7 @@
                 }
             }
 
-            // --- CONSTRUCCIÓN DE LA INTERFAZ (Una vez validada la contraseña) ---
+            // --- CONSTRUCCIÓN DE LA INTERFAZ ---
             function construirInterfaz() {
                 generarTablaHorario();
                 generarControlesSeleccion();
@@ -154,9 +158,6 @@
                 `).join('');
             }
             
-            // El resto de funciones (generarControlesSeleccion, actualizarVista, etc.) permanecen iguales.
-            // ... (Se incluyen a continuación para que el código sea completo) ...
-
             function generarControlesSeleccion() {
                 const opcionesContainer = document.getElementById('opciones-container');
                 opcionesContainer.innerHTML = '';
@@ -170,12 +171,10 @@
                         const label = document.createElement('label');
                         label.className = 'opcion-label';
                         label.setAttribute('for', idRadio);
-                        
                         let detalleTexto = `<strong>NRC ${opcion.nrc}</strong> - ${opcion.docente}`;
                         opcion.bloques.forEach(b => {
                             detalleTexto += `<br>${b.dia.charAt(0).toUpperCase() + b.dia.slice(1).toLowerCase()}: ${b.horario.replace(' A ', ' - ')}`;
                         });
-
                         label.innerHTML = `<input type="radio" name="grupo-${indexGrupo}" id="${idRadio}" data-grupo-index="${indexGrupo}" data-opcion-index="${indexOpcion}"><span class="detalle">${detalleTexto}</span>`;
                         grupoDiv.appendChild(label);
                     });
@@ -193,17 +192,12 @@
 
             function actualizarVista() {
                 limpiarHorario();
-                const listaResumen = document.getElementById('lista-resumen');
-                listaResumen.innerHTML = '';
-                
                 let asignaturasSeleccionadas = [];
                 let conflictos = new Set();
-
                 asignaturasFijas.forEach(ramo => {
                     asignaturasSeleccionadas.push(ramo);
                     ramo.bloques.forEach(bloque => agregarBloqueAlHorario(bloque, ramo, null, conflictos));
                 });
-                
                 document.querySelectorAll('input[type="radio"]:checked').forEach(radio => {
                     const iGrupo = radio.dataset.grupoIndex;
                     const iOpcion = radio.dataset.opcionIndex;
@@ -213,7 +207,6 @@
                     asignaturasSeleccionadas.push(ramoSeleccionado);
                     opcion.bloques.forEach(bloque => agregarBloqueAlHorario(bloque, ramoSeleccionado, iGrupo, conflictos));
                 });
-
                 actualizarResumen(asignaturasSeleccionadas);
                 if (conflictos.size > 0) {
                      setTimeout(() => alert(`¡Atención! Hay un tope de horario entre: ${Array.from(conflictos).join(' y ')}`), 10);
@@ -222,6 +215,7 @@
             
             function actualizarResumen(seleccionadas) {
                 const listaResumen = document.getElementById('lista-resumen');
+                listaResumen.innerHTML = '';
                 seleccionadas.sort((a,b) => (a.nombreGrupo || a.nombre).localeCompare(b.nombreGrupo || b.nombre));
                 seleccionadas.forEach(ramo => {
                     const li = document.createElement('li');
@@ -234,10 +228,8 @@
             function limpiarHorario() {
                 document.getElementById('cuerpo-horario').querySelectorAll('td').forEach(celda => {
                     celda.innerHTML = '';
-                    celda.style.backgroundColor = '';
-                    celda.style.display = '';
-                    celda.style.border = '';
                     celda.removeAttribute('rowspan');
+                    celda.style.display = '';
                 });
             }
 
@@ -251,12 +243,17 @@
                     const celdaInicio = document.getElementById(`celda-${bloque.dia}-${primerModulo.nombre.replace(/\s+/g, '')}`);
                     if (celdaInicio) {
                         if(celdaInicio.innerHTML !== '') {
-                           conflictos.add(`"${ramo.nombreCorto || ramo.nombre}"`);
+                           conflictos.add(`"${ramo.nombreGrupo || ramo.nombre}"`);
                            celdaInicio.style.border = "3px solid red";
                         }
                         celdaInicio.setAttribute('rowspan', modulosOcupados.length);
                         const botonEliminarHTML = grupoIndex !== null ? `<button class="btn-eliminar" data-grupo-index="${grupoIndex}" title="Quitar este ramo">×</button>` : '';
-                        celdaInicio.innerHTML = `<div class="bloque-clase ${ramo.color}">${botonEliminarHTML}<strong class="info-ramo">${ramo.nombreCorto || ramo.nombre}</strong><span class="nrc-corto">NRC ${ramo.nrc}</span><span class="docente-corto">${ramo.docente}</span></div>`;
+                        
+                        // MEJORA: Usar siempre el nombre completo (nombreGrupo para seleccionables, nombre para fijos)
+                        const nombreCompleto = ramo.nombreGrupo || ramo.nombre;
+
+                        celdaInicio.innerHTML = `<div class="bloque-clase ${ramo.color}">${botonEliminarHTML}<strong class="info-ramo">${nombreCompleto}</strong><span class="nrc-corto">NRC ${ramo.nrc}</span><span class="docente-corto">${ramo.docente}</span></div>`;
+                        
                         for (let i = 1; i < modulosOcupados.length; i++) {
                             const celdaOcultar = document.getElementById(`celda-${bloque.dia}-${modulosOcupados[i].nombre.replace(/\s+/g, '')}`);
                             if(celdaOcultar) celdaOcultar.style.display = 'none';
