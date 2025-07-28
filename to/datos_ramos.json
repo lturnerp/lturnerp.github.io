@@ -1,0 +1,109 @@
+{
+  "password": "to.uss",
+  "asignaturasFijas": [
+    {
+      "nombre": "TEORICO SALUD POBLACIONAL",
+      "nrc": "-",
+      "docente": "-",
+      "color": "color-naranja",
+      "bloques": [{ "dia": "JUEVES", "horario": "08:00 A 10:50" }]
+    },
+    {
+      "nombre": "SIMULACIÓN",
+      "nrc": "-",
+      "docente": "-",
+      "color": "color-gris",
+      "bloques": [
+            { "dia": "MIÉRCOLES", "horario": "08:00 A 13:50" },
+            { "dia": "MIÉRCOLES", "horario": "14:30 A 18:50" }
+        ]
+    },
+    {
+      "nombre": "ETICA",
+      "nrc": "-",
+      "docente": "-",
+      "color": "color-rosa",
+      "bloques": [{ "dia": "VIERNES", "horario": "09:30 A 12:20" }]
+    }
+  ],
+  "gruposDeAsignaturas": [
+    {
+      "nombreGrupo": "TEORICO OCUPACIÓN Y COMPETENCIAS II",
+      "nombreCorto": "TEORICO Ocup. II",
+      "color": "color-azul",
+      "opciones": [
+        { "nrc": "15378", "docente": "FRANCISCO SALAZAR", "bloques": [{ "dia": "MARTES", "horario": "09:30 A 10:50" }] },
+        { "nrc": "15379", "docente": "CONSTANZA ORELLANA", "bloques": [{ "dia": "MARTES", "horario": "09:30 A 10:50" }] }
+      ]
+    },
+    {
+      "nombreGrupo": "TALLER DE OCUPACIÓN Y COMPETENCIAS II",
+      "nombreCorto": "TALLER Ocup. II",
+      "color": "color-azul",
+      "opciones": [
+        { "nrc": "15381", "docente": "PENDIENTE", "bloques": [{ "dia": "LUNES", "horario": "11:00 A 13:50" }] },
+        { "nrc": "15384", "docente": "FRANCISCO SALAZAR", "bloques": [{ "dia": "MARTES", "horario": "14:40 A 17:30" }] }
+      ]
+    },
+    {
+      "nombreGrupo": "TALLERES DE SALUD POBLACIONAL (LUNES)",
+      "nombreCorto": "TALLER Salud Pob.",
+      "color": "color-naranja",
+      "opciones": [
+        { "nrc": "-", "docente": "Sección 1", "bloques": [{ "dia": "LUNES", "horario": "14:30 A 15:50" }] },
+        { "nrc": "-", "docente": "Sección 2", "bloques": [{ "dia": "LUNES", "horario": "14:30 A 15:50" }] }
+      ]
+    },
+    {
+      "nombreGrupo": "TALLERES DE SALUD POBLACIONAL (MARTES)",
+      "nombreCorto": "TALLER Salud Pob.",
+      "color": "color-verde-claro",
+      "opciones": [
+        { "nrc": "-", "docente": "Sección 1", "bloques": [{ "dia": "MARTES", "horario": "11:00 A 12:20" }] },
+        { "nrc": "-", "docente": "Sección 2", "bloques": [{ "dia": "MARTES", "horario": "11:00 A 12:20" }] }
+      ]
+    },
+    {
+      "nombreGrupo": "TALLER DE GESTIÓN E INCLUSIÓN II",
+      "nombreCorto": "TALLER Gestión II",
+      "color": "color-amarillo-claro",
+      "opciones": [
+        { "nrc": "15396", "docente": "FELIPE ARANEDA", "bloques": [{ "dia": "LUNES", "horario": "14:30 A 15:50" }] },
+        { "nrc": "15397", "docente": "GERARDO HUME", "bloques": [{ "dia": "LUNES", "horario": "14:30 A 15:50" }] }
+      ]
+    },
+    {
+      "nombreGrupo": "TEORICO MARCOS DE REF. Y MODELOS",
+      "nombreCorto": "TEORICO Marcos",
+      "color": "color-verde-oscuro",
+      "opciones": [
+        { "nrc": "15356", "docente": "JACQUELINE CARTAGENA", "bloques": [{ "dia": "JUEVES", "horario": "11:00 A 13:50" }] },
+        { "nrc": "15358", "docente": "ALEX RIOS/JULIE VASQUEZ", "bloques": [{ "dia": "JUEVES", "horario": "11:00 A 13:50" }] }
+      ]
+    },
+    {
+      "nombreGrupo": "TALLER MARCOS DE REF. Y MODELOS",
+      "nombreCorto": "TALLER Marcos",
+      "color": "color-verde-oscuro",
+      "opciones": [
+        { "nrc": "15360", "docente": "J. CARTAGENA / P. ZBANKOVA", "bloques": [
+            { "dia": "MARTES", "horario": "12:30 A 13:50" },
+            { "dia": "JUEVES", "horario": "14:30 A 15:50" }
+        ]},
+        { "nrc": "15362", "docente": "A. RIOS / J. VASQUEZ", "bloques": [
+            { "dia": "MARTES", "horario": "12:30 A 13:50" },
+            { "dia": "JUEVES", "horario": "14:30 A 15:50" }
+        ]}
+      ]
+    },
+    {
+      "nombreGrupo": "TALLER HITO EVALUATIVO INTEGRATIVO",
+      "nombreCorto": "HITO Evaluativo",
+      "color": "color-amarillo",
+      "opciones": [
+        { "nrc": "15398", "docente": "NATALIA BILBAO", "bloques": [{ "dia": "VIERNES", "horario": "08:00 A 09:20" }] },
+        { "nrc": "15399", "docente": "JACQUELINE CARTAGENA", "bloques": [{ "dia": "VIERNES", "horario": "12:30 A 13:50" }] }
+      ]
+    }
+  ]
+}
