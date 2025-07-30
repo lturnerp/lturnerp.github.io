@@ -18,11 +18,11 @@
         areaMeasurement: "Área",
         start: "Inicio",
         meter: "m",
-        meterDecimals: 0,
+        meterDecimals: 1,
         kilometer: "km",
         kilometerDecimals: 2,
         squareMeter: "m²",
-        squareMeterDecimals: 0,
+        squareMeterDecimals: 1,
         squareKilometers: "km²",
         squareKilometersDecimals: 2
     };
