@@ -6,68 +6,32 @@
     <title>Visor de Ortofoto-REVER</title>
     <link rel="shortcut icon" href="data:image/svg+xml;base64,PHN2ZyBpZD0iQ2FwYV8xIiBkYXRhLW5hbWU9IkNhcGEgMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNTIxLjYyIDUyMS42MiI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiNhZjlhNmI7fTwvc3R5bGU+PC9kZWZzPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTI2MC44MSw0OTcuNTksMzczLjYsMjRINDg1LjA1TDM0MS4xOCw0OTYuODNIMTgwLjQzTDM2LjU2LDI0SDE0OFoiLz48L3N2Zz4=" />
 
+    <!-- Fuentes de Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&family=Saira+Condensed:wght@700&display=swap" rel="stylesheet">
 
+    <!-- Librerías Externas (CSS) -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <link rel="stylesheet" href="plugins/leaflet.measure.css" />
+    <link rel="stylesheet" href="css/leaflet.measure.css" />
 
-    <style>
-        :root {
-            --color-principal: #100F2B; --color-acento: #AF9A6B; --color-texto: #000000;
-            --color-fondo: #FFFFFF; --fuente-titulo: 'Saira Condensed', sans-serif; --fuente-texto: 'Manrope', sans-serif;
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        
-        html, body { 
-            height: 100%; 
-            font-family: var(--fuente-texto); 
-            background-color: var(--color-fondo);
-            -webkit-user-select: none;
-            -ms-user-select: none;    
-            user-select: none;       
-        }
-        
-        .page-container { display: flex; flex-direction: column; height: 100%; }
-        header { display: flex; justify-content: center; align-items: center; padding: 10px 20px; background-color: var(--color-principal); color: var(--color-fondo); flex-shrink: 0; }
-        header .logo img { height: 40px; }
-        main { flex-grow: 1; position: relative; }
-        #map { width: 100%; height: 100%; }
-        footer { padding: 15px 20px; background-color: var(--color-principal); text-align: center; flex-shrink: 0; }
-        #timeline-container { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-        .timeline-button { font-family: var(--fuente-texto); font-weight: 700; padding: 8px 15px; border: 2px solid var(--color-acento); background-color: transparent; color: var(--color-fondo); cursor: pointer; transition: all 0.3s ease; }
-        .timeline-button:hover, .timeline-button.active { background-color: var(--color-acento); color: var(--color-principal); }
-        .interactive-popup-link { cursor: pointer; color: var(--color-principal); font-weight: bold; text-decoration: underline; }
-        
-        .marker-label {
-            background-color: rgba(16, 15, 43, 0.9); border: 1px solid var(--color-acento);
-            color: var(--color-fondo); font-family: var(--fuente-titulo);
-            font-weight: normal; font-size: 13px; padding: 4px 8px; border-radius: 4px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.5); white-space: nowrap;
-        }
-
-        .iframe-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); display: none; justify-content: center; align-items: center; z-index: 1000; padding: 20px; }
-        .iframe-modal { background-color: var(--color-principal); border: 2px solid var(--color-acento); padding: 25px; border-radius: 5px; position: relative; width: 100%; height: 100%; display: flex; flex-direction: column; gap: 15px; }
-        .close-modal { position: absolute; top: -5px; right: 5px; font-size: 2.5em; color: var(--color-acento); cursor: pointer; z-index: 1001; font-weight: bold; }
-        #iframe-content-container { width: 100%; flex-grow: 1; background-color: #000; }
-        #iframe-content-container iframe { width: 100%; height: 100%; border: none; }
-        .modal-footer { text-align: center; flex-shrink: 0; }
-        .new-tab-link { font-family: var(--fuente-texto); color: var(--color-fondo); text-decoration: none; font-weight: bold; padding: 8px 15px; border: 2px solid var(--color-acento); border-radius: 5px; transition: all 0.3s ease; }
-        .new-tab-link:hover { background-color: var(--color-acento); color: var(--color-principal); }
-        
-        @media (max-width: 600px) {
-            header { flex-direction: column; gap: 10px; }
-            .iframe-overlay { padding: 10px; }
-        }
-    </style>
+    <!-- Tu hoja de estilos personalizada -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="page-container">
-        <header><div class="logo"><img src="./rever-blanco-pequeno.svg" alt="Logo de la Empresa"></div></header>
-        <main><div id="map"></div></main>
-        <footer><div id="timeline-container"></div></footer>
+        <header>
+            <div class="logo"><img src="brand/rever-blanco-pequeno.svg"></div>
+        </header>
+        <main>
+            <div id="map"></div>
+        </main>
+        <footer>
+            <div id="timeline-container"></div>
+        </footer>
     </div>
+
+    <!-- Contenedor del Modal (Iframe) -->
     <div id="iframe-overlay" class="iframe-overlay">
         <div id="iframe-modal" class="iframe-modal">
             <span id="close-modal" class="close-modal">×</span>
@@ -80,147 +44,11 @@
         </div>
     </div>
 
+    <!-- Librerías Externas (JavaScript) -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="plugins/leaflet.measure.js"></script>
+    <script src="js/leaflet.measure.js"></script>
 
-    <script>
-        const ortofotosDisponibles = [
-            { fecha: "30 cm", ruta: './teselas/{z}/{x}/{y}.png' },
-            { fecha: "5.5 cm", ruta: './teselas_max/{z}/{x}/{y}.png' }
-        ];
-
-        const map = L.map('map', {
-            attributionControl: false // Esta opción deshabilita el control de atribución
-        }).setView([-23.763, -70.469], 16);
-        let ortofotoActual = null;
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxNativeZoom: 19, attribution: '© OpenStreetMap' }).addTo(map);
-        
-        const measureControl = new L.Control.Measure({ position: 'topleft', primaryLengthUnit: 'meters' });
-        measureControl.addTo(map);
-        
-        window.oncontextmenu = function(event) {
-            event.preventDefault();
-            event.stopPropagation();
-            return false;
-        };
-        
-        const overlay = document.getElementById('iframe-overlay');
-        const iframeContainer = document.getElementById('iframe-content-container');
-        const closeModalBtn = document.getElementById('close-modal');
-        const newTabLink = document.getElementById('new-tab-link');
-
-        let marcadoresEnMapa = [];
-
-        async function cargarMarcadores() {
-            try {
-                const response = await fetch('marcadores.json');
-                if (!response.ok) throw new Error('No se pudo cargar marcadores.json');
-                const marcadoresData = await response.json();
-                crearIconosYMarcadores(marcadoresData);
-            } catch (error) {
-                console.error("Error al cargar los marcadores:", error);
-            }
-        }
-
-        function crearIconosYMarcadores(data) {
-            const colorPrincipal = '#100F2B';
-            const colorAcento = '#AF9A6B';
-            const customIcon = L.icon({
-                iconUrl: `data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 34" width="34" height="34"><path d="M17,33 C17,33 5,21 5,13 A12,12 0 1,1 29,13 C29,21 17,33 17,33 Z" fill="${encodeURIComponent(colorAcento)}" stroke="${encodeURIComponent(colorPrincipal)}" stroke-width="2"/><circle cx="17" cy="13" r="5" fill="${encodeURIComponent(colorPrincipal)}"/></svg>`,
-                iconSize: [34, 34], iconAnchor: [17, 33], popupAnchor: [0, -33]
-            });
-
-            data.forEach(marcadorData => {
-                const marcador = L.marker(marcadorData.coordenadas, { icon: customIcon });
-
-                const contenidoPopup = document.createElement('span');
-                contenidoPopup.className = 'interactive-popup-link';
-                contenidoPopup.textContent = marcadorData.popupTexto;
-                contenidoPopup.onclick = () => manejarClickMarcador(marcadorData);
-                marcador.bindPopup(contenidoPopup);
-
-                marcador.bindTooltip(marcadorData.nombre, {
-                    permanent: true, direction: 'bottom',
-                    offset: [0, 0], className: 'marker-label'
-                });
-                
-                marcadoresEnMapa.push(marcador);
-            });
-
-            map.on('zoomend', actualizarVisibilidadMarcadores);
-            actualizarVisibilidadMarcadores();
-        }
-
-        function manejarClickMarcador(data) {
-            if (data.usarIframe) {
-                abrirModal(data);
-            } else {
-                window.open(data.linkNuevaPestana, '_blank');
-            }
-        }
-
-        function actualizarVisibilidadMarcadores() {
-            const zoomActual = map.getZoom();
-            marcadoresEnMapa.forEach(marcador => {
-                if (zoomActual >= 18) {
-                    if (!map.hasLayer(marcador)) marcador.addTo(map);
-                } else {
-                    if (map.hasLayer(marcador)) marcador.removeFrom(map);
-                }
-            });
-        }
-        
-        function ocultarTodosLosMarcadores() {
-            marcadoresEnMapa.forEach(marcador => {
-                if (map.hasLayer(marcador)) {
-                    marcador.removeFrom(map);
-                }
-            });
-        }
-        
-        map.on('measurestart', function() {
-            ocultarTodosLosMarcadores();
-        });
-
-        map.on('measurefinish', function() {
-            actualizarVisibilidadMarcadores();
-        });
-        
-        function abrirModal(data) {
-            const iframeHTML = `<iframe src="${data.iframeLink}" allow="fullscreen"></iframe>`;
-            iframeContainer.innerHTML = iframeHTML;
-            newTabLink.href = data.linkNuevaPestana;
-            overlay.style.display = 'flex';
-        }
-
-        function cerrarModal() {
-            overlay.style.display = 'none';
-            iframeContainer.innerHTML = '';
-        }
-        closeModalBtn.onclick = cerrarModal;
-        overlay.onclick = (event) => { if (event.target === overlay) cerrarModal(); };
-        
-        const timelineContainer = document.getElementById('timeline-container');
-        function cargarOrtofoto(ruta, botonSeleccionado) {
-            if (ortofotoActual) map.removeLayer(ortofotoActual);
-            ortofotoActual = L.tileLayer(ruta, { minZoom: 15, maxZoom: 22, tms: false, attribution: 'REVER' }).addTo(map);
-            document.querySelectorAll('.timeline-button').forEach(btn => btn.classList.remove('active'));
-            botonSeleccionado.classList.add('active');
-        }
-        ortofotosDisponibles.forEach(orto => {
-            const boton = document.createElement('button');
-            boton.className = 'timeline-button';
-            boton.textContent = orto.fecha;
-            boton.onclick = () => cargarOrtofoto(orto.ruta, boton);
-            timelineContainer.appendChild(boton);
-        });
-        if (ortofotosDisponibles.length > 0) {
-            const primerBoton = timelineContainer.querySelector('.timeline-button');
-            cargarOrtofoto(ortofotosDisponibles[0].ruta, primerBoton);
-        }
-        
-        cargarMarcadores();
-
-    </script>
+    <!-- Tu script personalizado -->
+    <script src="js/script.js"></script>
 </body>
 </html>
