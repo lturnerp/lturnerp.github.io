@@ -259,8 +259,14 @@
             this._lastPoint = latlng;
             this._startMove = false;
         },
+
         _onMouseMove: function (event) {
             var latlng = event.latlng;
+
+            if (this._tooltip) {
+                this._tooltip.setLatLng(latlng);
+            }
+
             if (this._trail.points.length > 0) {
                 if (this._startMove) {
                     this._directPath.setLatLngs(this._trail.points.concat(latlng));
@@ -270,6 +276,8 @@
                 }
             }
         },
+
+
         _enableMeasure: function () {
             var map = this._map;
             this._trail = {
@@ -280,23 +288,30 @@
             if ( map.options.preferCanvas ) {
                 map.options.preferCanvas = false;
                 console.warn( 'Temporarily reset map.options.prefersCanvas to false' );
-                //HACK: With canvas rendering enabled (and no other markers present on the map), this will create an permanent
-                // overlaying layer of type L.Canvas that swallows mouse events.
             }
             map.addLayer( this._trail.overlays );
 
             L.DomUtil.addClass(map._container, "leaflet-measure-map");
             map.contextMenu && map.contextMenu.disable();
             this._measurementStarted = true;
+            this._map.fire('measurestart');
+            this._tooltip = new L.MeasureLable({
+                latlng: L.latLng([0,0]),
+                content: 'Click derecho para finalizar',
+                className: 'leaflet-measure-tooltip' 
+            });
+            this._trail.overlays.addLayer(this._tooltip);
             map.on("click", this._onMouseClick, this);
             map.on("dblclick contextmenu", this._finishMeasure, this);
             map.doubleClickZoom.disable();
             map.on("mousemove", this._onMouseMove, this);
         },
+
         _disableMeasure: function () {
             var map = this._map;
             L.DomUtil.removeClass(map.getContainer(), "leaflet-measure-map");
             map.contextMenu && map.contextMenu.enable();
+            this._tooltip = null;
             map.off("click", this._onMouseClick, this);
             map.off("dblclick contextmenu", this._finishMeasure, this);
             map.off("mousemove", this._onMouseMove, this);
@@ -304,7 +319,14 @@
             this._measurementStarted = this._startMove = false;
             this.disable();
         },
+
         _finishMeasure: function (event) {
+            this._map.fire('measurefinish');
+            if (this._tooltip && this._trail.overlays) {
+                this._trail.overlays.removeLayer(this._tooltip);
+                this._tooltip = null;
+            }
+
             if (this._trail.points.length > 0) {
                 if (this._trail.points.length > 1) {
                     if (!event || event.type === "contextmenu") {
@@ -332,6 +354,7 @@
             }
             this._disableMeasure();
         },
+
         _resetDirectPath: function (latlng) {
             if (!this._directPath) {
                 if (this.options.model === "area") {
