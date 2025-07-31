@@ -16,7 +16,7 @@
     L.Measure = {
         linearMeasurement: "Distancia",
         areaMeasurement: "Área",
-        start: "Inicio",
+        start: "0",
         meter: "m",
         meterDecimals: 1,
         kilometer: "km",
