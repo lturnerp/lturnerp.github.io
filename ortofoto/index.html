@@ -89,7 +89,9 @@
             { fecha: "5.5 cm", ruta: './teselas_max/{z}/{x}/{y}.png' }
         ];
 
-        const map = L.map('map').setView([-23.763, -70.469], 16);
+        const map = L.map('map', {
+            attributionControl: false // Esta opción deshabilita el control de atribución
+        }).setView([-23.763, -70.469], 16);
         let ortofotoActual = null;
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxNativeZoom: 19, attribution: '© OpenStreetMap' }).addTo(map);
         
