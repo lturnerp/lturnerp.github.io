@@ -45,11 +45,83 @@ header .logo img {
 main {
     flex-grow: 1;
     position: relative;
+    display: flex; 
 }
 
 #map {
     width: 100%;
     height: 100%;
+    display: flex; 
+}
+
+
+.map-container {
+    height: 100%;
+    width: 100%; 
+    position: relative; 
+}
+
+#map.split-view .map-container {
+    width: 50%;
+}
+
+#map.split-view .map-container + .map-container {
+    border-left: 4px solid var(--color-acento);
+}
+
+.map-overlay {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 401; 
+    background-color: rgba(16, 15, 43, 0.9);
+    color: var(--color-fondo);
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: 1px solid var(--color-acento);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-family: var(--fuente-titulo);
+}
+
+.map-name {
+    font-weight: bold;
+}
+
+.map-close-button {
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--color-acento);
+}
+
+.map-close-button:hover {
+    color: white;
+}
+
+.custom-context-menu {
+    position: absolute;
+    z-index: 1100; 
+    background-color: var(--color-principal);
+    border: 1px solid var(--color-acento);
+    border-radius: 4px;
+    padding: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    display: none; 
+    transform: translateY(-100%);
+}
+
+.context-menu-option {
+    padding: 8px 12px;
+    color: var(--color-fondo);
+    cursor: pointer;
+}
+
+.context-menu-option:hover {
+    background-color: var(--color-acento);
+    color: var(--color-principal);
 }
 
 footer {
