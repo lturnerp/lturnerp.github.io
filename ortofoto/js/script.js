@@ -1,11 +1,8 @@
-const ortofotosDisponibles = [
-    { fecha: "30 cm", ruta: './teselas/{z}/{x}/{y}.png' },
-    { fecha: "5.5 cm", ruta: './teselas_max/{z}/{x}/{y}.png' }
-];
 const coordenadasIniciales = [-23.763, -70.469];
 const zoomInicial = 16;
 const zoomMinimoMarcadores = 18;
 
+let ortofotosDisponibles = [];
 let mapaIzquierdo, mapaDerecho;
 let capaOrtofotoIzquierda, capaOrtofotoDerecha;
 let vistaDivididaActiva = false;
@@ -21,7 +18,18 @@ const newTabLink = document.getElementById('new-tab-link');
 const contextMenu = document.getElementById('custom-context-menu');
 const splitViewOption = document.getElementById('split-view-option');
 
-
+async function cargarConfiguracionOrtofotos() {
+    try {
+        const response = await fetch('datos/ortofotos.json');
+        if (!response.ok) {
+            throw new Error(`Error en la red: ${response.statusText}`);
+        }
+        ortofotosDisponibles = await response.json();
+    } catch (error) {
+        console.error("Error crítico al cargar la configuración de ortofotos:", error);
+        alert("No se pudo cargar la configuración de los mapas. La aplicación no puede continuar.");
+    }
+}
 
 function inicializarMapaPrincipal() {
     const containerIzquierdo = document.createElement('div');
@@ -124,7 +132,7 @@ function inicializarLineaDeTiempo() {
     });
 
     document.addEventListener('click', () => { if (contextMenu.style.display === 'block') contextMenu.style.display = 'none'; });
-    if (ortofotosDisponibles.length > 0) cargarOrtofoto(ortofotosDisponibles[0], timelineContainer.querySelector('.timeline-button'));
+    if (ortofotosDisponibles.length > 0) cargarOrtofoto(ortofotosDisponibles[ortofotosDisponibles.length - 1], timelineContainer.lastElementChild);
 }
 
 
@@ -180,7 +188,7 @@ function cargarOrtofoto(datosOrto, botonSeleccionado) {
 
 async function cargarDatosDeMarcadores() {
     try {
-        const response = await fetch('marcadores.json');
+        const response = await fetch('datos/marcadores.json');
         if (!response.ok) throw new Error('No se pudo cargar marcadores.json');
         datosGlobalesMarcadores = await response.json();
     } catch (error) {
@@ -266,9 +274,17 @@ closeModalBtn.onclick = cerrarModal;
 overlay.onclick = (event) => { if (event.target === overlay) cerrarModal(); };
 
 async function iniciarApp() {
-    inicializarMapaPrincipal();
-    inicializarLineaDeTiempo();
+    await cargarConfiguracionOrtofotos();
     await cargarDatosDeMarcadores();
+
+    if (ortofotosDisponibles.length === 0) {
+        console.error("No hay ortofotos para mostrar. Finalizando inicialización.");
+        return; 
+    }
+    
+    inicializarMapaPrincipal();
+    inicializarLineaDeTiempo(); 
+
     if (datosGlobalesMarcadores.length > 0) {
         renderizarMarcadoresParaMapa(mapaIzquierdo, datosGlobalesMarcadores);
     }

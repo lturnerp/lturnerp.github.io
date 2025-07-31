@@ -1,0 +1,10 @@
+[
+  {
+    "fecha": "30 cm",
+    "ruta": "./teselas/{z}/{x}/{y}.png"
+  },
+  {
+    "fecha": "5.5 cm",
+    "ruta": "./teselas_max/{z}/{x}/{y}.png"
+  }
+]
