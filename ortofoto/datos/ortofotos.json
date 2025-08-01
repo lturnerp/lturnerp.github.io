@@ -1,10 +1,10 @@
 [
   {
-    "fecha": "30 cm",
-    "ruta": "./datos/teselas/17.07.2025_30cm/{z}/{x}/{y}.png"
+    "fecha": "17/07/2025",
+    "ruta": "./datos/teselas/17.07.2025_ResMax/{z}/{x}/{y}.png"
   },
   {
-    "fecha": "5.5 cm",
-    "ruta": "./datos/teselas/17.07.2025_ResMax/{z}/{x}/{y}.png"
+    "fecha": "31/07/2025",
+    "ruta": "./datos/teselas/31.07.2025_3cm/{z}/{x}/{y}.png"
   }
 ]
