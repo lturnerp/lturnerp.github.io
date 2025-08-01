@@ -1,5 +1,9 @@
 [
   {
+    "fecha": "17/07/2025_2",
+    "ruta": "./datos/teselas/17.07.2025_30cm/{z}/{x}/{y}.png"
+  },
+  {
     "fecha": "17/07/2025",
     "ruta": "./datos/teselas/17.07.2025_ResMax/{z}/{x}/{y}.png"
   },
