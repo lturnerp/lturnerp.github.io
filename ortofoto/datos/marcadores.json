@@ -12,7 +12,7 @@
       {
         "texto": "Recorrido interactivo 08/2025",
         "iframeLink": "https://embed.prevu3d.com/9c3b2e613d791bdaefc582c16a5eca83f804dd503b6c9887367f68695c9eb18a797cb1a48639d8589fd454cc7b4d23c9",
-        "usarIframe": false,
+        "usarIframe": true,
         "linkNuevaPestana": "https://cloud.prevu3d.com/share/9c3b2e613d791bdaefc582c16a5eca83f804dd503b6c9887367f68695c9eb18a797cb1a48639d8589fd454cc7b4d23c9"
       }
     ]
