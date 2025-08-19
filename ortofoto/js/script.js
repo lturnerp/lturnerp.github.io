@@ -1,15 +1,25 @@
-// script.js (versión final corregida)
+// script.js (versión con límites de zoom y de mapa)
 
 const coordenadasIniciales = [-23.763, -70.469];
 const zoomInicial = 16;
 const zoomMinimoMarcadores = 18;
+
+// LÍMITES DE ZOOM
+const ZOOM_MINIMO_MAPA = 14;
+const ZOOM_MAXIMO_MAPA = 21;
+
+// --- LÍMITES DEL MAPA ---
+// DEBES CAMBIAR ESTAS COORDENADAS POR LAS DE TU ÁREA DE INTERÉS
+const southWest = L.latLng(-23.803, -70.509); // Esquina Suroeste
+const northEast = L.latLng(-23.723, -70.429); // Esquina Noreste
+const maxBounds = L.latLngBounds(southWest, northEast);
 
 let ortofotosDisponibles = [];
 let mapaIzquierdo, mapaDerecho;
 let vistaDivididaActiva = false;
 let datosOrtoActivaIzquierda;
 let datosGlobalesMarcadores = [];
-let splitViewControl; // Variable global para el control de vista dividida
+let splitViewControl;
 
 const mapContainer = document.getElementById('map');
 const timelineContainer = document.getElementById('timeline-container');
@@ -32,14 +42,18 @@ async function cargarConfiguracionOrtofotos() {
 }
 
 function inicializarMapaPrincipal() {
-    mapContainer.innerHTML = ''; // Limpiar por si acaso
+    mapContainer.innerHTML = '';
     mapaIzquierdo = L.map('map', {
         attributionControl: false,
-        zoomControl: false // El control de zoom se añade manualmente
+        zoomControl: false,
+        minZoom: ZOOM_MINIMO_MAPA,
+        maxZoom: ZOOM_MAXIMO_MAPA,
+        maxBounds: maxBounds, // LÍMITE DE MAPA AÑADIDO
+        maxBoundsViscosity: 1.0  // Hace que los límites sean sólidos
     }).setView(coordenadasIniciales, zoomInicial);
 
     L.control.zoom({ position: 'topleft' }).addTo(mapaIzquierdo);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxNativeZoom: 19, attribution: '© OpenStreetMap' }).addTo(mapaIzquierdo);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: ZOOM_MAXIMO_MAPA, attribution: '© OpenStreetMap' }).addTo(mapaIzquierdo);
     
     agregarControlDeMedida(mapaIzquierdo);
     agregarControlVistaDividida(mapaIzquierdo);
@@ -70,7 +84,6 @@ function agregarControlVistaDividida(mapa) {
             this.button.title = 'Activar/Desactivar pantalla dividida';
             this.button.href = '#';
 
-            // Marcar como activo si ya estamos en vista dividida
             if (vistaDivididaActiva) {
                 L.DomUtil.addClass(this.button, 'active');
             }
@@ -118,24 +131,37 @@ function activarVistaDividida(datosIzquierda, datosDerecha) {
     mapContainer.appendChild(containerDerecho);
 
     // Inicializar mapa izquierdo
-    mapaIzquierdo = L.map(containerIzquierdo.id, { attributionControl: false, zoomControl: false }).setView(centro, zoom);
-    L.control.zoom({ position: 'topleft' }).addTo(mapaIzquierdo); // AÑADIR CONTROL DE ZOOM
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxNativeZoom: 19 }).addTo(mapaIzquierdo);
+    mapaIzquierdo = L.map(containerIzquierdo.id, { 
+        attributionControl: false, 
+        zoomControl: false,
+        minZoom: ZOOM_MINIMO_MAPA,
+        maxZoom: ZOOM_MAXIMO_MAPA,
+        maxBounds: maxBounds, // LÍMITE DE MAPA AÑADIDO
+        maxBoundsViscosity: 1.0
+    }).setView(centro, zoom);
+    L.control.zoom({ position: 'topleft' }).addTo(mapaIzquierdo);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: ZOOM_MAXIMO_MAPA }).addTo(mapaIzquierdo);
     mapaIzquierdo.capaOrtofoto = L.tileLayer(datosIzquierda.ruta, { minZoom: 15, maxZoom: 22, tms: false }).addTo(mapaIzquierdo);
     agregarControlDeMedida(mapaIzquierdo);
     renderizarMarcadoresParaMapa(mapaIzquierdo, datosGlobalesMarcadores);
     crearSuperposicionMapa(mapaIzquierdo, datosIzquierda, 'izquierda');
     
     // Inicializar mapa derecho
-    mapaDerecho = L.map(containerDerecho.id, { attributionControl: false, zoomControl: false }).setView(centro, zoom);
-    L.control.zoom({ position: 'topleft' }).addTo(mapaDerecho); // AÑADIR CONTROL DE ZOOM
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxNativeZoom: 19 }).addTo(mapaDerecho);
+    mapaDerecho = L.map(containerDerecho.id, { 
+        attributionControl: false, 
+        zoomControl: false,
+        minZoom: ZOOM_MINIMO_MAPA,
+        maxZoom: ZOOM_MAXIMO_MAPA,
+        maxBounds: maxBounds, // LÍMITE DE MAPA AÑADIDO
+        maxBoundsViscosity: 1.0
+    }).setView(centro, zoom);
+    L.control.zoom({ position: 'topleft' }).addTo(mapaDerecho);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: ZOOM_MAXIMO_MAPA }).addTo(mapaDerecho);
     mapaDerecho.capaOrtofoto = L.tileLayer(datosDerecha.ruta, { minZoom: 15, maxZoom: 22, tms: false }).addTo(mapaDerecho);
     agregarControlDeMedida(mapaDerecho);
     renderizarMarcadoresParaMapa(mapaDerecho, datosGlobalesMarcadores);
     crearSuperposicionMapa(mapaDerecho, datosDerecha, 'derecha');
 
-    // Volver a añadir el control de vista dividida al mapa de la izquierda
     agregarControlVistaDividida(mapaIzquierdo);
     
     mapaIzquierdo.on('move zoom', sincronizarMapas);
@@ -146,7 +172,7 @@ function activarVistaDividida(datosIzquierda, datosDerecha) {
 }
 
 function inicializarLineaDeTiempo() {
-    timelineContainer.innerHTML = ''; // Limpiar por si se reinicializa
+    timelineContainer.innerHTML = '';
     ortofotosDisponibles.forEach(orto => {
         const boton = document.createElement('button');
         boton.className = 'timeline-button';
@@ -181,7 +207,6 @@ function inicializarLineaDeTiempo() {
     }
 }
 
-// MODIFICADO: Lógica de desactivación
 function desactivarVistaDividida() {
     if (!vistaDivididaActiva) return;
 
@@ -192,7 +217,6 @@ function desactivarVistaDividida() {
     if(mapaDerecho) mapaDerecho.remove();
     mapaDerecho = null;
     
-    // Re-inicializar el mapa principal y cargar la última ortofoto disponible
     inicializarMapaPrincipal();
     const ultimaOrtofoto = ortofotosDisponibles[ortofotosDisponibles.length - 1];
     cargarOrtofoto(ultimaOrtofoto);
@@ -237,21 +261,41 @@ async function cargarDatosDeMarcadores() {
 
 function renderizarMarcadoresParaMapa(mapa, datosMarcadores) {
     mapa.misMarcadores = [];
-    const colorPrincipal = '#100F2B'; const colorAcento = '#AF9A6B';
+    const colorPrincipal = '#100F2B';
+    const colorAcento = '#AF9A6B';
     const customIcon = L.icon({
         iconUrl: `data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 34" width="34" height="34"><path d="M17,33 C17,33 5,21 5,13 A12,12 0 1,1 29,13 C29,21 17,33 17,33 Z" fill="${encodeURIComponent(colorAcento)}" stroke="${encodeURIComponent(colorPrincipal)}" stroke-width="2"/><circle cx="17" cy="13" r="5" fill="${encodeURIComponent(colorPrincipal)}"/></svg>`,
-        iconSize: [34, 34], iconAnchor: [17, 33], popupAnchor: [0, -33]
+        iconSize: [34, 34],
+        iconAnchor: [17, 33],
+        popupAnchor: [0, -33]
     });
+
     datosMarcadores.forEach(marcadorData => {
         const marcador = L.marker(marcadorData.coordenadas, { icon: customIcon });
-        const contenidoPopup = document.createElement('span');
-        contenidoPopup.className = 'interactive-popup-link';
-        contenidoPopup.textContent = marcadorData.popupTexto;
-        contenidoPopup.onclick = () => manejarClickMarcador(marcadorData);
-        marcador.bindPopup(contenidoPopup);
+        const divContenedor = document.createElement('div');
+
+        if (marcadorData.enlaces && Array.isArray(marcadorData.enlaces)) {
+            marcadorData.enlaces.forEach(enlace => {
+                const linkContainer = document.createElement('div'); 
+                linkContainer.className = 'interactive-popup-link';
+                linkContainer.textContent = enlace.texto;
+                linkContainer.onclick = () => manejarClickMarcador(enlace);
+                linkContainer.style.padding = '3px 0'; 
+                divContenedor.appendChild(linkContainer);
+            });
+        } else {
+            const contenidoPopup = document.createElement('span');
+            contenidoPopup.className = 'interactive-popup-link';
+            contenidoPopup.textContent = marcadorData.popupTexto;
+            contenidoPopup.onclick = () => manejarClickMarcador(marcadorData);
+            divContenedor.appendChild(contenidoPopup);
+        }
+
+        marcador.bindPopup(divContenedor);
         marcador.bindTooltip(marcadorData.nombre, { permanent: true, direction: 'bottom', offset: [0, 0], className: 'marker-label' });
         mapa.misMarcadores.push(marcador);
     });
+
     mapa.on('zoomend', () => actualizarVisibilidadMarcadores(mapa));
     actualizarVisibilidadMarcadores(mapa);
 }
@@ -275,7 +319,6 @@ function manejarClickMarcador(data) {
     else window.open(data.linkNuevaPestana, '_blank');
 }
 
-// MODIFICADO: Eliminado el span con el nombre de la fecha
 function crearSuperposicionMapa(mapa, datosOrto, lado) {
     const container = mapa.getContainer();
     container.dataset.ortoFecha = datosOrto.fecha;
@@ -307,7 +350,7 @@ function crearSuperposicionMapa(mapa, datosOrto, lado) {
 
         if(otrosMapasActivos.filter(f => f !== container.dataset.ortoFecha).includes(nuevaOrtoFecha)){
             alert('Esta fecha ya está seleccionada en la otra vista.');
-            e.target.value = container.dataset.ortoFecha; // Revertir selección
+            e.target.value = container.dataset.ortoFecha;
             return;
         }
 

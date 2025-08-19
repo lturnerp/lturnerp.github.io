@@ -1,11 +1,21 @@
 [
   {
     "nombre": "Espesador N°3",
-    "popupTexto": "Recorrido interactivo 03/2023",
     "coordenadas": [-23.7615657, -70.4680829],
-    "iframeLink": "https://embed.prevu3d.com/97cb0c9382fb3fb826ce7968d584f8596a1486a5b6c961ba2779946bdd32a33d8be131ce3d8748aedee4d945a10aa308",
-    "usarIframe": true,
-    "linkNuevaPestana": "https://cloud.prevu3d.com/share/97cb0c9382fb3fb826ce7968d584f8596a1486a5b6c961ba2779946bdd32a33d8be131ce3d8748aedee4d945a10aa308"
+    "enlaces": [
+      {
+        "texto": "Recorrido interactivo 03/2023",
+        "iframeLink": "https://embed.prevu3d.com/97cb0c9382fb3fb826ce7968d584f8596a1486a5b6c961ba2779946bdd32a33d8be131ce3d8748aedee4d945a10aa308",
+        "usarIframe": true,
+        "linkNuevaPestana": "https://cloud.prevu3d.com/share/97cb0c9382fb3fb826ce7968d584f8596a1486a5b6c961ba2779946bdd32a33d8be131ce3d8748aedee4d945a10aa308"
+      },
+      {
+        "texto": "Recorrido interactivo 08/2025",
+        "iframeLink": "https://embed.prevu3d.com/9c3b2e613d791bdaefc582c16a5eca83f804dd503b6c9887367f68695c9eb18a797cb1a48639d8589fd454cc7b4d23c9",
+        "usarIframe": false,
+        "linkNuevaPestana": "https://cloud.prevu3d.com/share/9c3b2e613d791bdaefc582c16a5eca83f804dd503b6c9887367f68695c9eb18a797cb1a48639d8589fd454cc7b4d23c9"
+      }
+    ]
   },
   {
     "nombre": "RO EWS",
